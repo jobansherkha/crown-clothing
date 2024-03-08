@@ -1,5 +1,6 @@
 
 import React from 'react'
+import './CategoryGrid.scss'
 import { CategoryItem } from '../CategoryItem/CategoryItem';
 export const CategoryGrid = ({categories}) => {
   return (

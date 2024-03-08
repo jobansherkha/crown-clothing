@@ -1,39 +1,28 @@
 import React from "react";
-import { CategoryGrid } from "./components/CategoryGrid/CategoryGrid";
+import { Home } from "./components/Home/Home";
+import { Route, Routes } from "react-router";
+import { Navigation } from "./components/Routes/Navigation/Navigation";
+import { Shop } from "./components/Routes/Shop/Shop";
+import { SignIn } from "./components/Routes/SignIn/SignIn";
+import { Authentication } from "./components/Routes/Authentication/Authentication";
 
 
 const App = () => {
-  const categories = [
-    {
-      "id": 1,
-      "title": "hats",
-      "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
-    },
-    {
-      "id": 2,
-      "title": "jackets",
-      "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
-    },
-    {
-      "id": 3,
-      "title": "sneakers",
-      "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png"
-    },
-    {
-      "id": 4,
-      "title": "womens",
-      "imageUrl": "https://i.ibb.co/GCCdy8t/womens.png"
-    },
-    {
-      "id": 5,
-      "title": "mens",
-      "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
-    }
-  ]
-  
+
   return (
-    <CategoryGrid categories = {categories}/>
+    <Routes>
+    <Route path='/' element={<Navigation />}>
+      <Route index element={<Home />} />
+      <Route path='/SHOP' element={<Shop/>}/>
+      <Route path='/signin' element={<Authentication/>}/>
+      <Route path='/authentication' element={<Authentication/>}/>
+      </Route>
+      
+     
+      
+   
+  </Routes>
   );
-};
+}
 
 export default App;
