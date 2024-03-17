@@ -4,7 +4,9 @@ import { ReactComponent as CrwnLogo } from "../../../Assets/crown.svg";
 import "./Navigation.scss";
 import { UserContext } from "../../context/UserContext";
 import { signOutAuth } from "../../utils/Utils";
-
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+import CartIcon from "../../cart/CartIcon";
+import CartDropDown from "../../cart/CartDropDown";
 export const Navigation = () => {
   const { currentUser, setcurrentUser } = useContext(UserContext);
 
@@ -33,7 +35,12 @@ export const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <Link className="nav-link" >
+          <CartDropDown/>
+          </Link>
+          
         </div>
+        
       </div>
       <Outlet />
     </Fragment>
