@@ -6,6 +6,7 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 
 import CartIcon from "./CartIcon";
+import { CartItem } from "./CartItem";
 
 export default function CartDropDown() {
   const [state, setState] = React.useState({
@@ -26,19 +27,15 @@ export default function CartDropDown() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 300 }}
+      sx={{ width: 500 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-       
-      </List>
-      <Divider />
-      <List>
       
-       
-      </List>
+       <CartItem/>
+   
+      
     </Box>
   );
 
