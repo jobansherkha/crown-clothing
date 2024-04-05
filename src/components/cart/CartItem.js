@@ -1,33 +1,40 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../context/CartContext';
+import React, { useContext, useState } from 'react'
+import { CartContext, addCartItems } from '../context/CartContext';
 import Button from '../button/Button'
+import { CartCard } from './CartCard';
 
 export const CartItem = () => {
 
   const { cartItems } = useContext(CartContext);
     console.log(cartItems)
-    
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    // Calculate total price whenever items change
+    useState(() => {
+      let total = 0;
+      cartItems.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      setTotalPrice(total);
+    }, [cartItems]);
+  const onRemove =()=>{
+
+  }
+
+ 
+
+ const onCheckout = ()=> {
+
+ }
       
   return (
-    <div className='cart-dropdown-container'>
-    <div className='cart-items'>
-      {cartItems.length ? (
-        cartItems.map((cartItem) => (
-          <div className='cart-item-container'>
-      <img src={cartItem.imageUrl} alt={`${cartItem.name}`} />
-      <div className='item-details'>
-        <span className='name'>{cartItem.name}</span>
-        <span className='price'>
-          {cartItem.quantity} * ${cartItem.price}
-        </span>
-      </div>
-    </div>
-        ))
-      ) : (
-        <span className='empty-message'>Your cart is empty</span>
-      )}
-    </div>
-    <Button>GO TO CHECKOUT</Button>
+    <div>
+    {cartItems.map((item, index) => (
+      <CartCard key={index} item={item} onRemove={onRemove} />
+    ))}
+    <Button variant="contained" color="primary" onClick={onCheckout}>
+      Checkout - Total: ${totalPrice}
+    </Button>
   </div>
   )
 }
