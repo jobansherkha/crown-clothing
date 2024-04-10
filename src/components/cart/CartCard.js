@@ -8,7 +8,7 @@ import { CartContext } from '../context/CartContext';
 
 export const CartCard = ({ item, onRemove, onAddQuantity }) => {
     const { imageUrl, name, quantity, price } = item;
-    const { addItemsToCart } = useContext(CartContext);
+    const { addItemsToCart, removeItemsFromCart } = useContext(CartContext);
   return (
     <Card>
     <CardContent>
@@ -21,7 +21,7 @@ export const CartCard = ({ item, onRemove, onAddQuantity }) => {
           <Typography variant="body2">Price: ${price}</Typography>
         </Grid>
         <Grid item>
-          <IconButton onClick={''}>
+          <IconButton onClick={() => removeItemsFromCart(item)}>
             <RemoveIcon />
           </IconButton>
           <Typography>{quantity}</Typography>
@@ -32,7 +32,7 @@ export const CartCard = ({ item, onRemove, onAddQuantity }) => {
       </Grid>
     </CardContent>
     <CardActions>
-      <Button size="small" color="secondary" startIcon={<DeleteIcon />} onClick={() => onRemove(item)}>
+      <Button size="small" color="secondary" startIcon={<DeleteIcon />} >
         Remove
       </Button>
     </CardActions>

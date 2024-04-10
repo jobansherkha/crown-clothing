@@ -30,7 +30,7 @@ export const CartItem = () => {
   return (
     <div>
     {cartItems.map((item, index) => (
-      <CartCard key={index} item={item} onRemove={onRemove} />
+      <CartCard key={index} item={item}/>
     ))}
     <Button variant="contained" color="primary" onClick={onCheckout}>
       Checkout - Total: ${totalPrice}
